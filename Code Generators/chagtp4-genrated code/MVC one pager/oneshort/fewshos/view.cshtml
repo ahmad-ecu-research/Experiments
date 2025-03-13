@@ -1,0 +1,29 @@
+@model YourNamespace.Models.Contact
+
+<form asp-action="Index" method="post">
+    <div>
+        <label for="Name">Name:</label>
+        <input asp-for="Name" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div>
+        <label for="Email">Email:</label>
+        <input asp-for="Email" type="email" required />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label for="Message">Message:</label>
+        <textarea asp-for="Message" required></textarea>
+        <span asp-validation-for="Message" class="text-danger"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+@if (Model != null && !string.IsNullOrEmpty(Model.Name))
+{
+    <div>
+        <h2>@Html.DisplayFor(model => model.Name)'s Contact Information</h2>
+        <p>Email: @Html.DisplayFor(model => model.Email)</p>
+        <p>Message: @Html.DisplayFor(model => model.Message)</p>
+    </div>
+}
